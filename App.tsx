@@ -265,10 +265,12 @@ const App: React.FC = () => {
           <div className="lg:col-span-9">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               
-              {/* Left Column of Content: Morning & All Day */}
+              {/* Left Column of Content: Morning & All Day (All Day hidden on mobile here) */}
               <div>
                 <RenderTaskBlock block={morningBlock} />
-                <RenderTaskBlock block={allDayBlock} />
+                <div className="hidden md:block">
+                  <RenderTaskBlock block={allDayBlock} />
+                </div>
               </div>
 
               {/* Right Column of Content: Day & Evening */}
@@ -277,6 +279,11 @@ const App: React.FC = () => {
                 <RenderTaskBlock block={eveningBlock} />
               </div>
 
+            </div>
+
+            {/* Mobile Only: All Day Block at the bottom */}
+            <div className="md:hidden">
+              <RenderTaskBlock block={allDayBlock} />
             </div>
 
             {/* End of list spacer */}
